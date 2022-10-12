@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2 class="text-slate-800 my-2 text-white" >{% block title %}¿olvidaste tu contraseña?{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  <form method="post" action="{{ url_for('auth.forgot')}}" class="px-4">
+    <label for="email">cual es el correo de tu cuenta</label>
+    <input type="email" name="email" id="email" class="rounded-md mb-6" required>
+    <input type="submit" value="mandar" class="button-54">
+  </form>
+{% endblock %}

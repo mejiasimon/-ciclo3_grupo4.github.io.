@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2 class="text-slate-800 my-2 text-white">{% block title %}Logearse{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  <form method="post" action="{{ url_for('auth.login')}}" class="px-4">
+    <label for="username">nombre de usuario</label>
+    <input type="text" name="username" id="username" class="rounded-md mb-2" required>
+    <label for="password">contraseña</label>
+    <input type="password" name="password" id="password" class="rounded-md mb-6" required>
+    <input type="submit" value="iniciar sesion" class="button-54">
+  </form>
+   
+{% endblock %}

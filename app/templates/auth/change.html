@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2 class="text-slate-800 my-2 text-white">{% block title %}cambia tu contraseña{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  <form method="post" action="{{ url_for('auth.confirm')}}" class="px-4">
+    <label for="password">escribe tu nueva contraseña</label>
+    <input type="password" name="password" id="password" class="rounded-md mb-2" required>
+    <label for="password1">Confirma tu nueva contraseña</label>
+    <input type="password" name="password1" id="password1" class="rounded-md mb-6" required>
+    <input type="hidden" id="authid" name="authid" value={{number}}>
+    <input type="submit" value="cambiar contraseña" class="button-54">
+  </form>
+   
+{% endblock %}

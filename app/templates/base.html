@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="bg-slate-900">
+  <head>
+    <title>{% block title %}{% endblock %} - Myapp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body class="max-w-lg mx-auto rounded-md">
+    <nav class="rounded-t-md prose">
+      <div class="titulo"> <h1>bally</h1></div>
+     
+      <ul class="m-0">
+        {% if g.user %}
+          <li><span>{{ g.user['nombre de usuario'] }}</span>
+          <li><a href="{{ url_for('auth.logout') }}">cerrar</a>
+        {% else %}
+          <li><a href="{{ url_for('auth.register') }}">Registrarse</a>
+          <li><a href="{{ url_for('auth.login') }}">Login</a>
+          <li><a href="{{ url_for('auth.forgot') }}">¿olvidaste tu contraseña?</a>
+        {% endif %}
+      </ul>
+    </nav>
+    <section class="content">
+      <header class="mb-2 flex justify-between">
+        {% block header %}{% endblock %}
+      </header>
+      {% for message in get_flashed_messages() %}
+        <div class="flash rounded-md bg-indigo-300 border-indigo-600 text-indigo-800">{{ message }}</div>
+      {% endfor %}
+      {% block content %}{% endblock %}
+    </section>
+  </body>
+</html>
